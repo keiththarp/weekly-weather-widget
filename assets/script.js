@@ -50,7 +50,6 @@ $(document).ready(function () {
   // Use the search term to determine the correct coordinates
   function getCoords() {
     let placeName = $("input").val();
-    console.log(placeName);
     let geoAPIURL = "https://api.opencagedata.com/geocode/v1/json?q=" + placeName + "&key=eb47c1b37c7f4b77b7dc729f0915b698";
     $.get(geoAPIURL, function (result) {
       currentCity = result.results[0].formatted;
@@ -77,14 +76,13 @@ $(document).ready(function () {
     $.get(weatherURL, function (result) {
 
       // Display the current weather results
+      $(".current-weather-icon").attr("src", `http://openweathermap.org/img/wn/${result.current.weather[0].icon}@2x.png`);
       cityLabel.text(`Current weather in ${currentCity}`)
+
       currentTemp.text(` ${Math.round(result.current.temp)}ºF`);
       currentWind.text(` ${Math.round(result.current.wind_speed)} mph`);
       currentHumid.text(` ${Math.round(result.current.humidity)}%`);
       currentUV.text(` ${result.current.uvi}`)
-
-
-
 
       // Display forecasted weather
       dayBox.each(function (day) {
@@ -104,20 +102,16 @@ $(document).ready(function () {
     });
   };
 
-
-
-
   // Building recent search history
   function storeRecent() {
     recentCities = JSON.parse(localStorage.getItem("recent-cities"));
     const currentLabel = currentCity.split(",");
     const currentCityDisplay = `${currentLabel[0]},${currentLabel[1]}`
-    console.log(currentLabel);
-    console.log(`this is the string of city state ${currentCityDisplay}`);
 
     // Recent search object with city and Weather API call URL
     const currentRecent = {
       city: currentCityDisplay,
+      full: currentCity,
       URL: currentURL
     }
 
@@ -128,7 +122,6 @@ $(document).ready(function () {
       // If it does we move it to the top of the list and update local memory
       if (recentCities[i].city === currentCityDisplay) {
         exists = true;
-        console.log("We got to TRUE");
         recentCities.splice(i, 1);
         recentCities.unshift(currentRecent);
         recentCities = recentCities.slice(0, 5);
@@ -155,13 +148,26 @@ $(document).ready(function () {
     recentCities = recentCities.slice(0, 5);
     recentCitiesUL.empty();
     recentCities.forEach(function (item) {
-      console.log(item.city);
 
-      const newLI = $("<li>").attr("data-url", item.URL).text(item.city)
+      const newLI = $("<li>").attr("data-url", item.URL).attr("data-full", item.full).text(item.city)
       recentCitiesUL.append(newLI);
     });
   }
 
+  // Activating the recent cities
+  recentCitiesUL.on("click", function () {
+    const thisClick = event.target;
+
+    if (thisClick.matches("li")) {
+
+      currentCity = thisClick.getAttribute("data-full");
+      currentURL = thisClick.getAttribute("data-url");
+
+      weatherCall(currentURL);
+    }
+
+  });
+  document.querySelector
 
 
 
