@@ -1,3 +1,17 @@
 i.fa-heart {
   color: red;
 }
+
+span.recent-cities-label {
+  padding-left: 10px;
+  text-decoration: underline;
+}
+
+ul.recent-cities {
+  padding: 5px 0px;
+  background-color: #eeeeee;
+}
+.recent-cities li {
+  list-style: none;
+  padding-left:15px ;
+}
