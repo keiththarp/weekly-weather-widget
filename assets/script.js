@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+  let now = moment();
+
   // Search area variables 
   const searchButt = $(".search-butt");
 
@@ -10,6 +12,9 @@ $(document).ready(function () {
   const currentWind = $("#current-wind");
   const currentUV = $("#current-uv");
 
+  // Forecast elements
+  const dayBox = $(".day-box");
+
   // Recent & Favorite elements
   const recentCitiesUL = $(".recent-cities");
 
@@ -19,9 +24,22 @@ $(document).ready(function () {
 
   // Bring in the local memory
   let recentCities = JSON.parse(localStorage.getItem("recent-cities"));
+
+  // Set it up if it's empty
   if (!recentCities) {
     recentCities = [];
     localStorage.setItem("recent-cities", JSON.stringify(recentCities));
+
+    // Populate with Boston if empty
+    currentCity = "Boston, MA, United States of America"
+    currentURL = "https://api.openweathermap.org/data/2.5/onecall?lat=42.3602534&lon=-71.0582912&units=imperial&exclude=minutely,hourly&appid=aa0655e595f8fa747f0a44ae37aa4883";
+    weatherCall(currentURL);
+
+    // If it's not empty, let's load the last search
+  } else {
+    currentCity = recentCities[0].city;
+    currentURL = recentCities[0].URL;
+    weatherCall(currentURL);
   }
   // Put the recent searches from memory in the dropdown.
   writeRecent();
@@ -65,10 +83,29 @@ $(document).ready(function () {
       currentHumid.text(` ${Math.round(result.current.humidity)}%`);
       currentUV.text(` ${result.current.uvi}`)
 
+
+
+
+      // Display forecasted weather
+      dayBox.each(function (day) {
+        const _this = $(this);
+        _this.find(".forecast-day").text(now.add(1, "d").format("ddd, MMM D, YYYY"));
+        _this.find(".weather-icon").attr("src", `http://openweathermap.org/img/wn/${result.daily[day].weather[0].icon}@2x.png`);
+        _this.find(".forecast-temp").text(` ${Math.round(result.daily[day].temp.day)}ºF`);
+        _this.find(".forecast-precip").text(` ${Math.round(result.daily[day].pop * 100)}%`);
+        _this.find(".forecast-humid").text(` ${Math.round(result.daily[day].humidity)}%`);
+      });
+      // http://openweathermap.org/img/wn/10d@2x.png
+
+
+
       // Send the current search to local storage for recent history
       storeRecent();
     });
   };
+
+
+
 
   // Building recent search history
   function storeRecent() {

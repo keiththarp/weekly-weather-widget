@@ -38,10 +38,10 @@
             <ul class="recent-cities">
               <!-- Recent cities will populate here -->
             </ul>
-            <div class="fav-cities">
+            <!-- <div class="fav-cities">
               <div role="separator" class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Separated link</a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -51,6 +51,7 @@
   </header>
   <main class="container-sm">
 
+    <!-- Current weather area -->
     <div class="card my-3">
       <div class="card-header city-label">
         Current weather
@@ -62,49 +63,59 @@
         <p class="card-text">UV Index:<span id="current-uv"></span></p>
       </div>
     </div>
-    <div class="row justify-content-center">
 
-      <div class="card text-white bg-primary mb-3 col-lg-2 mx-2" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
+    <!-- Future weather area -->
+    <div class="row justify-content-center forecast-box">
+
+      <div class="card text-white bg-primary mb-3 col-lg-2 mx-2 day-box" style="max-width: 18rem;">
+        <div class="card-header d-flex align-items-center justify-content-center"><span class="forecast-day">Date
+          </span> <img class="weather-icon" src="" alt="weather icon" /></div>
         <div class="card-body">
-          <h5 class="card-title">Primary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <p class="card-text">Temperature:<span class="forecast-temp"></span></p>
+          <p class="card-text">Rain:<span class="forecast-precip"></span></p>
+          <p class="card-text">Humidity:<span class="forecast-humid"></span></p>
         </div>
       </div>
-      <div class="card text-white bg-primary mb-3 col-lg-2 mx-2" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
+
+      <div class="card text-white bg-primary mb-3 col-lg-2 mx-2 day-box" style="max-width: 18rem;">
+        <div class="card-header d-flex align-items-center justify-content-center"><span class="forecast-day">Date
+          </span> <img class="weather-icon" src="" alt="weather icon" /></div>
         <div class="card-body">
-          <h5 class="card-title">Primary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <p class="card-text">Temperature:<span class="forecast-temp"></span></p>
+          <p class="card-text">Rain:<span class="forecast-precip"></span></p>
+          <p class="card-text">Humidity:<span class="forecast-humid"></span></p>
         </div>
       </div>
-      <div class="card text-white bg-primary mb-3 col-lg-2 mx-2" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
+
+      <div class="card text-white bg-primary mb-3 col-lg-2 mx-2 day-box" style="max-width: 18rem;">
+        <div class="card-header d-flex align-items-center justify-content-center"><span class="forecast-day">Date
+          </span> <img class="weather-icon" src="" alt="weather icon" /></div>
         <div class="card-body">
-          <h5 class="card-title">Primary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <p class="card-text">Temperature:<span class="forecast-temp"></span></p>
+          <p class="card-text">Rain:<span class="forecast-precip"></span></p>
+          <p class="card-text">Humidity:<span class="forecast-humid"></span></p>
         </div>
       </div>
-      <div class="card text-white bg-primary mb-3 col-lg-2 mx-2" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
+
+      <div class="card text-white bg-primary mb-3 col-lg-2 mx-2 day-box" style="max-width: 18rem;">
+        <div class="card-header d-flex align-items-center justify-content-center"><span class="forecast-day">Date
+          </span> <img class="weather-icon" src="" alt="weather icon" /></div>
         <div class="card-body">
-          <h5 class="card-title">Primary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <p class="card-text">Temperature:<span class="forecast-temp"></span></p>
+          <p class="card-text">Rain:<span class="forecast-precip"></span></p>
+          <p class="card-text">Humidity:<span class="forecast-humid"></span></p>
         </div>
       </div>
-      <div class="card text-white bg-primary mb-3 col-lg-2 mx-2" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
+
+      <div class="card text-white bg-primary mb-3 col-lg-2 mx-2 day-box" style="max-width: 18rem;">
+        <div class="card-header d-flex align-items-center justify-content-center"><span class="forecast-day">Date
+          </span> <img class="weather-icon" src="" alt="weather icon" /></div>
         <div class="card-body">
-          <h5 class="card-title">Primary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <p class="card-text">Temperature:<span class="forecast-temp"></span></p>
+          <p class="card-text">Rain:<span class="forecast-precip"></span></p>
+          <p class="card-text">Humidity:<span class="forecast-humid"></span></p>
         </div>
       </div>
-    </div>
 
   </main>
 
@@ -121,6 +132,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 
   <script src="./assets/script.js"></script>
 </body>

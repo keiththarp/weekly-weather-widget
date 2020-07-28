@@ -9,9 +9,13 @@ span.recent-cities-label {
 
 ul.recent-cities {
   padding: 5px 0px;
-  background-color: #eeeeee;
+  background-color: #c9d7ee;
 }
 .recent-cities li {
   list-style: none;
   padding-left:15px ;
+}
+
+img.weather-icon {
+  width: 45px;
 }
