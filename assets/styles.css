@@ -1,16 +1,43 @@
 i.fa-heart {
   color: red;
 }
+span.city-label {
+  font-size: 1.5em;
+  font-weight: 500;
+  color: #fff;
+}
+
+#current-uv {
+  padding: 3px 8px 3px 3px;
+  margin-left: 5px;
+  color: #fff;
+  font-weight: bold;
+  background-color: red;
+  border-radius: 4px;
+}
 
 span.recent-cities-label {
   padding-left: 10px;
   text-decoration: underline;
 }
 
-ul.recent-cities {
+div.dropdown-menu, div.blue-bg {
   padding: 5px 0px;
-  background-color: #c9d7ee;
+  background-color: #cedbee;
 }
+
+div.main-blue-bg {
+  background-color: #cedbee;
+}
+
+div.dark-blue-bg {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #fff;
+  background-color: #047BFE;
+}
+
+
 .recent-cities li {
   list-style: none;
   padding-left:15px ;
@@ -23,3 +50,7 @@ img.weather-icon, img.current-weather-icon {
   text-align: center;
 }
 
+div.card-header {
+  background-color: #047BFE;
+
+}

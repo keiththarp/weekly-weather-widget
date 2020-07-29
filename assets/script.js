@@ -85,7 +85,9 @@ $(document).ready(function () {
       currentUV.text(` ${result.current.uvi}`)
 
       // Display forecasted weather
+
       dayBox.each(function (day) {
+        day++
         const _this = $(this);
         _this.find(".forecast-day").text(now.add(1, "d").format("ddd, MMM D, YYYY"));
         _this.find(".weather-icon").attr("src", `http://openweathermap.org/img/wn/${result.daily[day].weather[0].icon}@2x.png`);
