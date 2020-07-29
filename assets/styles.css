@@ -1,6 +1,10 @@
 i.fa-heart {
   color: red;
 }
+
+h1 {
+  color: #fff;
+}
 span.city-label {
   font-size: 1.5em;
   font-weight: 500;
