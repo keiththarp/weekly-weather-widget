@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-  let now = moment();
-
   // Search area variables 
   const searchButt = $(".search-butt");
 
@@ -72,7 +70,7 @@ $(document).ready(function () {
 
   // API call for the weather
   function weatherCall(weatherURL) {
-
+    let now = moment();
     $.get(weatherURL, function (result) {
 
       // Display the current weather results
@@ -87,7 +85,9 @@ $(document).ready(function () {
       // Display forecasted weather
 
       dayBox.each(function (day) {
+
         day++
+
         const _this = $(this);
         _this.find(".forecast-day").text(now.add(1, "d").format("ddd, MMM D, YYYY"));
         _this.find(".weather-icon").attr("src", `http://openweathermap.org/img/wn/${result.daily[day].weather[0].icon}@2x.png`);
