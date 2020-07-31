@@ -104,6 +104,17 @@ $(document).ready(function () {
     });
   };
 
+  // Filling the recent area in the dropdown
+  function writeRecent() {
+    recentCities = recentCities.slice(0, 5);
+    recentCitiesUL.empty();
+    recentCities.forEach(function (item) {
+
+      const newLI = $("<li>").attr("data-url", item.URL).attr("data-full", item.full).text(item.city)
+      recentCitiesUL.append(newLI);
+    });
+  }
+
   // Building recent search history
   function storeRecent() {
     recentCities = JSON.parse(localStorage.getItem("recent-cities"));
@@ -145,16 +156,6 @@ $(document).ready(function () {
     writeRecent();
   }
 
-  // Filling the recent area in the dropdown
-  function writeRecent() {
-    recentCities = recentCities.slice(0, 5);
-    recentCitiesUL.empty();
-    recentCities.forEach(function (item) {
-
-      const newLI = $("<li>").attr("data-url", item.URL).attr("data-full", item.full).text(item.city)
-      recentCitiesUL.append(newLI);
-    });
-  }
 
   // Activating the recent cities
   recentCitiesUL.on("click", function () {
