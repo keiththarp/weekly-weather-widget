@@ -2,6 +2,7 @@ $(document).ready(function () {
 
   // Search area variables 
   const searchButt = $(".search-butt");
+  const searchField = $(".search-field");
 
   // Current weather HTML elements
   const cityLabel = $(".city-label");
@@ -47,12 +48,14 @@ $(document).ready(function () {
 
   // Use the search term to determine the correct coordinates
   function getCoords() {
-    let placeName = $("input").val();
+    let placeName = searchField.val();
     let geoAPIURL = "https://api.opencagedata.com/geocode/v1/json?q=" + placeName + "&key=eb47c1b37c7f4b77b7dc729f0915b698";
     $.get(geoAPIURL, function (result) {
       currentCity = result.results[0].formatted;
       const lat = result.results[0].geometry.lat;
       const lng = result.results[0].geometry.lng;
+
+
 
       // Send the cords to be formatted for the weather API call
       buildWeatherURL(lat, lng);
@@ -113,6 +116,7 @@ $(document).ready(function () {
       const newLI = $("<li>").attr("data-url", item.URL).attr("data-full", item.full).text(item.city)
       recentCitiesUL.append(newLI);
     });
+    searchField.val("");
   }
 
   // Building recent search history
@@ -158,7 +162,7 @@ $(document).ready(function () {
 
 
   // Activating the recent cities
-  recentCitiesUL.on("click", function () {
+  recentCitiesUL.on("click", function (event) {
     const thisClick = event.target;
 
     if (thisClick.matches("li")) {
