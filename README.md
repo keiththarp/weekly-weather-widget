@@ -1,4 +1,4 @@
-# Weekly-Weather-Watch
+# Weekly-Weather-Widget
 Get the 5 day forecast for any city, fast!!
 Your last 5 searches are saved in the Favorites dropdown so you can quickly revisit your recent cities.
 view app at - https://keiththarp.github.io/weekly-weather-widget/.
